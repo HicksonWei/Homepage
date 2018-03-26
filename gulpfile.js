@@ -15,8 +15,8 @@ gulp.task('copyFontAwesome', () => {
     .pipe(gulp.dest('./public/css'));
 });
 
-gulp.task('copyJq', () => {
-  return gulp.src('./node_modules/jquery/dist/jquery.js')
+gulp.task('copyVendors', () => {
+  return gulp.src(['./node_modules/jquery/dist/jquery.js', './node_modules/chart.js/dist/Chart.bundle.min.js', './node_modules/patternomaly/dist/patternomaly.js'])
     .pipe(gulp.dest('./.tmp/vendors'));
 });
 
@@ -74,8 +74,7 @@ gulp.task('babel', () => {
     .pipe($.order([
       'scroll.js',
       'nav.js',
-      'carousel.js',
-      'life.js'
+      'carousel.js'
     ]))
     .pipe($.concat('all.js'))
     .pipe($.if(options.env === 'production', $.uglify({
@@ -94,8 +93,7 @@ gulp.task('vendorJs', () => {
     .pipe($.order([
       'jquery.js',
       'Chart.bundle.min.js',
-      'patternomaly.js',
-      'jquery.justifiedGallery.min.js'
+      'patternomaly.js'
     ])).pipe($.concat('vendors.js'))
     .pipe($.if(options.env === 'production', $.uglify()))
     .pipe(gulp.dest('./public/js'));
@@ -127,7 +125,7 @@ gulp.task('watch', () => {
 
 //交付前刪除 .tmp 及 public 重建
 gulp.task('clean', () => {
-  return gulp.src(['./public'], {read: false})
+  return gulp.src(['./tmp','./public'], {read: false})
     .pipe($.clean());
 });
 
@@ -136,9 +134,9 @@ gulp.task('clean', () => {
 gulp.task('init', ['copyFonts', 'copyFontAwesome', 'copyJq']);
 //開發模式，偵聽中 gulp
 gulp.task('default', $.sequence('jade', 'scss', 'babel', 'vendorJs', 'imgMin', 'browserSync', 'watch'));
-//交付 gulp build --production
-gulp.task('build', $.sequence('clean', 'jade', 'scss', 'babel', 'vendorJs', 'copyFonts', 'copyFontAwesome', 'copyJustifiedGallery', 'imgMin'))
-//部署 gulp deploy (master要先推上github)
+//交付 gulp build --env production
+gulp.task('build', $.sequence('clean', 'jade', 'scss', 'babel', 'copyVendors', 'vendorJs', 'copyFonts', 'copyFontAwesome', 'imgMin'))
+//部署 gulp deploy --env production (master要先推上github)
 gulp.task('deploy', () => {
   return gulp.src('./public/**/*')
     .pipe($.ghPages());
