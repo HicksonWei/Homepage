@@ -1,0 +1,150 @@
+.experience {
+  padding: 50px;
+  background: #000;
+  overflow: hidden;
+}
+
+.experience h2 {
+  color: #fff;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #000;
+}
+
+.line {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #fff;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bar{
+  position: absolute;
+  width: 6px;
+  background-color: red;
+}
+
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: #000;
+  width: 50%;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: -15px;
+  background-color: #000;
+  border: 4px solid #fff;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.left {
+  left: 0;
+}
+
+.left::before {
+  content: '';
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+.right::before {
+  content: '';
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+.right {
+  left: 50%;
+}
+
+.right::after {
+  left: -15px;
+}
+
+.timeline-content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+  h3{
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+    font-weight: bold;
+  }
+  span{
+    display: block;
+    font-size: 1.25rem;
+    padding-bottom: 10px;
+    font-weight: bold;
+  }
+  .title{
+    color: red;
+  }
+  .period{
+    font-size: 1rem;
+    color: blue;
+  }
+  p{
+    line-height: 1.2;
+  }
+}
+
+@media(max-width: 700px) {
+  .line {
+    left: 30px;
+    transform: translateX(0);
+  }
+  .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  .container::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  .left::after,
+  .right::after {
+    left: 18px;
+  }
+  .right {
+    left: 0;
+  }
+}
+
+@media(max-width: 500px){
+  .experience{
+    padding: 50px 0;
+  }
+}

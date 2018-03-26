@@ -1,0 +1,279 @@
+.carousel {
+  position: relative;
+  height: 100vh;
+}
+
+.covers {
+  display: none;
+}
+
+.cover1::after,
+.cover2::after,
+.cover3::after {
+  content: "";
+  position: absolute;
+  background-image: url('../img/cover1.jpg');
+  background-size: cover;
+  background-position: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.cover2::after {
+  background-image: url('../img/cover2.jpg');
+}
+
+.cover3::after {
+  background-image: url('../img/cover3.jpg');
+}
+
+.slogan1 {
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 5;
+  font-size: 3.5rem;
+  text-align: center;
+  font-family: 'Permanent Marker';
+  text-shadow: 2px 2px 8px #000;
+  width: 1000px;
+}
+
+.p1 {
+  display: block;
+}
+
+.p2 {
+  display: none;
+}
+
+.slogan2 {
+  position: absolute;
+  color: #fff;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 5;
+  font-size: 4rem;
+  text-align: left;
+  font-style: italic;
+  text-shadow: -1px -1px 2px #aaa;
+  font-family: 'Shadows Into Light';
+}
+
+.slogan3 {
+  position: absolute;
+  color: #DDDCEF;
+  top: 60%;
+  left: 25%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 5;
+  font-size: 5rem;
+  font-family: 'Shadows Into Light';
+  text-shadow: -2px -2px 1px #DDDCEF;
+}
+
+.caption1 {
+  position: absolute;
+  color: #000;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px #fff;
+  font-size: 3rem;
+  // font-family: monospace;
+}
+
+.caption2 {
+  position: absolute;
+  color: #fff;
+  top: 80%;
+  left: 70%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+  font-size: 2rem;
+  font-style: italic;
+  text-shadow: -1px -1px 2px #aaa;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 5rem;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  transform: translateY(-50%);
+  text-decoration: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.indicator {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  margin-right: 20px;
+  border: 3px solid #fff;
+}
+
+.dot:last-of-type {
+  margin: 0;
+}
+
+.dot:hover {
+  background-color: #717171;
+}
+
+.active {
+  background-color: #000;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: .7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media(max-width: 1400px) {
+  .slogan1 {
+    font-size: 2.5rem;
+  }
+  .caption1 {
+    font-size: 2.5rem;
+  }
+  .slogan3 {
+    font-size: 4rem;
+    left: 30%;
+  }
+}
+
+@media(max-width: 1200px) {
+  .slogan1 {
+    width: 700px;
+  }
+  .prev,
+  .next {
+    font-size: 4rem;
+  }
+}
+
+@media(max-width: 1100px) {
+  .slogan2 {
+    font-size: 3rem;
+  }
+  .slogan3 {
+    font-size: 3rem;
+    left: 30%;
+  }
+}
+
+@media(max-width: 900px) {
+  .slogan1 {
+    width: 400px;
+    top: 40%;
+    line-height: 1.2;
+  }
+  .caption1 {
+    top: 65%;
+    font-size: 1.75rem;
+  }
+  .prev,
+  .next {
+    font-size: 3rem;
+  }
+}
+
+@media(max-width: 800px) {
+  .slogan2 {
+    font-size: 2rem;
+  }
+  .caption2 {
+    font-size: 1.5rem;
+  }
+  .slogan3 {
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 8px #000;
+    line-height: 1.8;
+    letter-spacing: 2px;
+  }
+}
+
+@media(max-width: 650px) {
+  .slogan1 {
+    width: 150px;
+    font-size: 2rem;
+    line-height: 1.8;
+    letter-spacing: 2px;
+  }
+  .slogan2 {
+    width: 130px;
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 2px;
+    top: 50%;
+  }
+  .caption1 {
+    top: 65%;
+    width: 200px;
+    text-align: center;
+  }
+  .caption2 {
+    display: none;
+  }
+  .p1 {
+    display: none;
+  }
+  .p2 {
+    display: block;
+  }
+}
+
+@media(max-width: 500px) {
+  .prev,
+  .next {
+    font-size: 2rem;
+  }
+}
